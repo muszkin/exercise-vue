@@ -7,13 +7,19 @@
       <div class="card-body">
         <ul class="list-group" style="display: flex;flex-direction: row;">
           <li class="list-group-item"><img :src="meal.strMealThumb" width="320"/></li>
-          <li class="list-group-item">{{ meal.strInstructions }} </li>
+          <li class="list-group-item">{{ meal.strInstructions }}
+            <br/><br/>
+            <span v-if="meal.strTags">Tags: {{ meal.strTags }}</span>
+            <br/><br/>
+            <span v-if="meal.strDrinkAlternate">Alternate drinks: {{ meal.strDrinkAlternate }}</span>
+          </li>
           <li class="list-group-item" width="100%">Ingredients:
             <ul class="list-group">
               <li v-for="(ingredient, index) in ingredients" :key="index" class="list-group-item"><strong>{{ ingredient.name }}</strong> - {{ ingredient.measure }}</li>
             </ul>
           </li>
           <li class="list-group-item"><a :href="meal.strSource" target="_blank"> Source </a></li>
+          <li v-if="meal.strYoutube" class="list-group-item"><a :href="meal.strYoutube" target="_blank"> Video </a></li>
         </ul>
       </div>
     </div>
